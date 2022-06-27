@@ -8,12 +8,17 @@ class Graph {
 		this.numOfVertices = numOfVertices;
 		adjMatrix = new int[numOfVertices][numOfVertices];
 	}
-	
+
+	public void addEdgeWithWeight(int u, int v, int w) {
+		adjMatrix[u][v] = w;
+		adjMatrix[v][u] = w;
+	}
+
 	public void addEdge(int u, int v) {
 		adjMatrix[u][v] = 1;
 		adjMatrix[v][u] = 1;
 	}
-	
+
 	public void printgraph() {
 		for (int i = 0; i < adjMatrix.length; i++) {
 			for (int j = 0; j < adjMatrix.length; j++) {
@@ -27,19 +32,18 @@ class Graph {
 public class GraphRepAdjMatrix {
 
 	public static void main(String[] args) {
-		//Define the graph
-		
+		// Define the graph
+
 		Graph graph = new Graph(4);
-		
-		graph.addEdge(0, 1);
-		graph.addEdge(0, 2);
-		graph.addEdge(1, 2);
-		graph.addEdge(2, 0);
-		graph.addEdge(2, 3);
-		
+
+		graph.addEdgeWithWeight(0, 1, 9);
+		graph.addEdgeWithWeight(0, 2, 7);
+		graph.addEdgeWithWeight(1, 2, 8);
+		graph.addEdgeWithWeight(2, 0, 3);
+		graph.addEdgeWithWeight(2, 3, 5);
+
 		graph.printgraph();
-		
-		
+
 	}
 
 }
